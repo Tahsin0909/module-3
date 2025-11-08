@@ -17,7 +17,7 @@ class LinkedList {
 
         const newNode = new Node(value)
         //if the linked list ois empty
-       if(this.head === null){
+       if(this.head == null){
           this.head = newNode
           this.tail = newNode
        }
@@ -29,24 +29,72 @@ class LinkedList {
     this.length++;
     }
 
-    prepend(){
+    prepend(value){
+
+        const newNode = new Node(value)
+        //if the linked list ois empty
+       if(this.head == null){
+        this.head = newNode
+        this.tail = newNode;
+       }
+       else{
+    // if the LinkedList is not empty 
+        newNode.next = this.head
+        this.head = newNode
 
     }
-
-    insert(){
-
+    this.length++;
     }
 
-    remove(){
+    insert(index, value){
+    if(index < 0 || index > this.length){
+return undefined
+    }
+    if(index === 0){
+        return this.prepend(value)
+    } 
+    if(index === this.length){
+        return this.append(value)
+    }
+    else{
+        const newNode = new Node(value)
+        let count = 0;
+        let leadingNode = this.head
+  
+        while(count !== index- 1){
+            leadingNode = leadingNode.next
+            count++
+        }
+      const holdingNode = leadingNode.next
+      newNode.next = holdingNode
+      leadingNode.next = newNode
 
+    }
+    }
+
+    remove(index){
+        console.log(this.head)
+        let count = 0;
+        let leadingNode = this.head
+  
+        while(count !== index- 1){
+            leadingNode = leadingNode.next
+            count++
+        }
+        console.log(leadingNode)
+      const holdingNode = leadingNode.next
+      console.log(holdingNode)
+      this.head = holdingNode
     }
 
     print(){
+        const arr = []
 let currentNode = this.head
-console.log(currentNode)
 while(currentNode !== null){
-    console.log(currentNode.value)
+arr.push(currentNode.value)
+    currentNode = currentNode.next
 }
+console.log(arr.join("->"))
     }
 }
 
@@ -56,6 +104,11 @@ linkedList.append(1)
 linkedList.append(2)
 linkedList.append(3)
 
+linkedList.prepend(10)
+linkedList.prepend(30)
+linkedList.prepend(40)
 
+linkedList.insert(2, 20)
+linkedList.remove(4)
 linkedList.print()
 
