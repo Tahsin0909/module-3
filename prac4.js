@@ -73,7 +73,7 @@ return undefined
     }
 
     remove(index){
-        console.log(this.head)
+
         let count = 0;
         let leadingNode = this.head
   
@@ -81,10 +81,13 @@ return undefined
             leadingNode = leadingNode.next
             count++
         }
+        const nodeToRemove = leadingNode.next 
         console.log(leadingNode)
-      const holdingNode = leadingNode.next
-      console.log(holdingNode)
-      this.head = holdingNode
+        console.log("nodeToRemove",nodeToRemove)
+        console.log(leadingNode.value)
+        console.log(this.head)
+        console.log(this.tail)
+
     }
 
     print(){
